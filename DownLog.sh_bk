@@ -1,0 +1,6 @@
+#!/bin/bash
+result=`find /root/test/ -name "*.log" | grep "Logs"`
+downfile=`find /root/test/ -name "*.log" | grep "Logs" | grep -v "\\\\"`
+tar cvf serverlog.tar.gz $downfile
+sz serverlog.tar.gz
+rm serverlog.tar.gz

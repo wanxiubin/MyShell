@@ -1,0 +1,38 @@
+#! /bin/bash
+
+content=""
+dir=""
+
+find()
+{
+
+	if [ -d "$dir" ]; then
+		findRes=`find  "$dir" -name "*.log" | grep "Logs" | grep -v '\\\\'`
+		if [ $findRes = ""]; then
+			echo "xxxxxxxxxxxxxxxxxxxx"	
+		else
+			echo $findRes
+		fi
+		echo "$dir"
+	else
+		echo "not find dir:$dir"
+	fi
+
+}
+
+
+if [ $# -lt 1 ]; then
+	echo "Usage $0 [dir] [findContent]"
+elif [ $# = 1 ]; then
+	dir="./"
+	content=$1
+	find
+elif [ $# = 2 ]; then
+	dir=$1
+	content=$2
+	find
+else
+	echo "Usage $0 [dir] [findContent]"
+fi
+
+echo $dir $content
